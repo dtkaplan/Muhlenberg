@@ -9,8 +9,8 @@ This page provides links to resources we will use during the workshop.
 
 Links to ...
 
-* [Post comments, notes, questions, etc.](https://docs.google.com/document/d/1krVU4GJiodgPpcCFhkYNvpM_IrApj9MY0rw7bYryChc/edit?usp=sharing)
-* [Shared spreadsheet](https://docs.google.com/spreadsheets/d/13Drvam0AEN2YMhEgUebYF92azPzTK36NnR076N-C8pg/edit?usp=sharing). for entering data
+* A place to [post comments, notes, questions, etc.](https://docs.google.com/document/d/1krVU4GJiodgPpcCFhkYNvpM_IrApj9MY0rw7bYryChc/edit?usp=sharing)
+* [Shared spreadsheet](https://docs.google.com/spreadsheets/d/13Drvam0AEN2YMhEgUebYF92azPzTK36NnR076N-C8pg/edit?usp=sharing) for entering data
 
 ## Installing Software
 
