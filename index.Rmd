@@ -1,0 +1,29 @@
+# Muhlenberg College R Workshop
+
+## February 7, 2015
+
+This page provides links to resources we will use during the workshop.
+
+
+## Communicating
+
+* Post comments, notes, questions, etc.
+* Shared spreadsheet: for entering data
+
+## Installing 
+
+* Macalester RStudio server: login at <macalester.edu/rstudio>.  Account names and passwords available from Danny. 
+* Install desktop version: an alternative to the server:
+    1. Install R: <http://cran.rstudio.com/>
+    2. Install preview edition of RStudio: <http://www.rstudio.com/products/rstudio/download/preview/>
+    3. Windows only ... install Rtools: <http://cran.r-project.org/bin/windows/Rtools/Rtools32.exe>
+* Install packages, from "Packages" tab.
+    * `devtools`, `mosaic`, `knitr`, `rmarkdown`
+
+
+
+
+
+
+
+
