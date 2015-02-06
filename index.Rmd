@@ -23,7 +23,7 @@ Alternatively ...
     2. Install preview edition of RStudio: <http://www.rstudio.com/products/rstudio/download/preview/>
     3. Windows only ... install Rtools: <http://cran.r-project.org/bin/windows/Rtools/Rtools32.exe>
 * Install packages, from "Packages" tab.
-    * `devtools`, `mosaic`, `knitr`, `rmarkdown`
+    * `devtools`, `mosaic`, `knitr`, `rmarkdown`, `dplyr`, `ggplot2`
 
 
 
