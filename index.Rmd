@@ -22,8 +22,13 @@ Alternatively ...
     1. Install R: <http://cran.rstudio.com/>
     2. Install preview edition of RStudio: <http://www.rstudio.com/products/rstudio/download/preview/>
     3. Windows only ... install Rtools: <http://cran.r-project.org/bin/windows/Rtools/Rtools32.exe>
-* Install packages, from "Packages" tab.
-    * `devtools`, `mosaic`, `knitr`, `rmarkdown`, `dplyr`, `ggplot2`
+* Install packages
+    * An experiment.  Run these lines in your console:
+    ```r
+    install.packages("devtools")
+    devtools::install_url("http://dtkaplan.github.io/Muhlenberg/YourCourse_0.2.tar.gz")
+```
+    * Otherwise: from "Packages" tab: `devtools`, `mosaic`, `knitr`, `rmarkdown`, `dplyr`, `ggplot2`
 
 
 
