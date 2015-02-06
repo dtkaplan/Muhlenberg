@@ -1,0 +1,36 @@
+---
+title: "What's a Fireplace Worth"
+author: "=====> Your Name Here <===="
+date: "`date()`"
+output: html_document
+---
+
+<!-- Boilerplate ----------------------------->
+```{r include=FALSE}
+library(YourCourse) 
+```
+```{r echo=FALSE,results='asis'}
+cat("Rmd source for this document: ")
+includeSourceDocuments()
+```
+<!-- Keep this line and the preceeding ones. -->
+
+You're a homeowner.  You're thinking of renovating your home to add a fireplace. This is very expensive, but you figure it will increase the value of the home and you'll get the money back when you sell the home.
+
+Your problem in this activity is to make a sensible estimate of the amount by which a fireplace would increase the sales price of your house.  This estimate will guide your decision about how much it's worth paying for a fireplace.
+
+You have collected some data on recent house sales in your area.
+```{r}
+Houses <- our_file("SaratogaHouses.csv")
+```
+The variables are:
+
+* `Price` the selling price of the house
+* `Living.Area` the area of the house in square feet
+* `Baths` the number of bathrooms in the house
+* `Bedrooms` the number of bedrooms in the  house
+* `Fireplace` whether or not the house has a fireplace
+* `Acres` the lot size, in acres
+* `Age` how old the house is
+
+Your house has a living area of 1500 sq feet, 1.5 bathrooms, 2 bedrooms, a lot of 0.5 acres, and is 25 years old.
