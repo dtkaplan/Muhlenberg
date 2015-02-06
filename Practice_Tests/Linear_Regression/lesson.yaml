@@ -1,0 +1,196 @@
+- Class: meta
+  Course: Practice Tests
+  Lesson: Linear Regression
+  Author: Akanksha 
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.9
+  
+- Class: text
+  Output: Today, we will practice linear regression and models!
+
+- Class: text
+  Output: The data frame that we are using for this activity is called "bf" and it lists the body fat percentages and weights of 252 males along with the circumference of their hips, necks, arms, etc (measured in cm). 
+  
+- Class: cmd_question
+  Output: First- let us look at the names of the variables in this data frame. Enter a valid R-command to do this.  
+  CorrectAnswer: names(bf)
+  AnswerTests: omnitest(correctExpr='names(bf)')
+  Hint: Use the R-command--> names(name_of_dataset)
+
+- Class: text
+  Output: We know that hip circumference is correlated with weight. Consider using an individual's weight to predict their hip circumference. In this relationship, weight is the explanatory variable and hip circumference is the response variable.
+
+- Class: figure
+  Output: Observe the scatter plot of this relationship in your "Files|Plots|Packages|Help" pane. The plot was made with the R-command--> ggplot(bf, aes(x=weight, y=hip)) + geom_point() + labs(title="Scatter-plot of hip circum. vs weight", x="Weight(lbs)", y="Hip Circum.(cm)") 
+  Figure: hip_and_weightscatter.R
+  FigureType: add
+
+
+- Class: cmd_question
+  Output: It is not that hard to make plots! Give it a try yourself. Type in the same code as above, and change the title of the graph to "Hip circumference and weight of 252 individuals". 
+  CorrectAnswer: ggplot(bf, aes(x=weight, y=hip)) + geom_point() + labs(title="Hip circumference and weight of 252 individuals", x="Weight(lbs)", y="Hip Circum.(cm)")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs'); aes_arg('weight'); aes_arg('hip')
+  Hint: Your R-code should look like this --> ggplot(bf, aes(x=weight, y=hip)) + geom_point() + labs(title="Hip circumference and weight of 252 individuals", x="Weight(lbs)", y="Hip Circum.(cm)")
+
+- Class: text
+  Output: Based on the plot, it is evident that there is a positive linear relationship between hip circumference and weight of the individual.
+
+- Class: text
+  Output: To summarize this linear relationship, we can add a standard curve to our scatter plot using the stat_smooth() function.This can be achieved using the following R-command --> ggplot(bf, aes(x=weight, y=hip)) + geom_point() + labs(title="Scatter-plot of hip circum. vs weight", x="Weight(lbs)", y="Hip Circum.(cm)")+stat_smooth(method="lm", se=FALSE)
+
+- Class: figure
+  Output: Observe the plot that appears in your plot panel. 
+  Figure: hip_and_weightlinear.R
+  FigureType: add
+
+
+- Class: cmd_question
+  Output: Let's play around with the plot a bit. Rewrite the command for the new plot, but change the title of the graph once again to say "Standard Curve of Hip Circumference and Weight"
+  CorrectAnswer: ggplot(bf, aes(x=weight, y=hip)) + geom_point() + labs(title="Standard Curve of Hip Circumference and Weight", x="Weight(lbs)", y="Hip Circum.(cm)") + stat_smooth(method="lm", se=FALSE)
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs'); aes_arg('weight'); aes_arg('hip')
+  Hint: You can do this using the  statement-> title = "" in the labs() function. 
+
+
+- Class: mult_question
+  Output: Observe the plot that you just created to answer the following question. We can see a standard curve with a slope greater than 0. This indicates that hip circumference and weight are
+  AnswerChoices: positively correlated; negatively correlated; not correlated
+  CorrectAnswer: positively correlated 
+  AnswerTests: omnitest(correctVal="positively correlated")
+  Hint: The slope of the graph is positive, which indicates that an increase in one variable would lead to a corresponding increase in the other variable. This indicates a positive correlation. 
+
+- Class: text
+  Output: Let us now support our visual observations by performing a regression analysis. The first step in doing so is to construct a linear model.  
+
+- Class: cmd_question
+  Output: Use the lm() command to make a linear model that captures the relationship between hip circumference (variable name "hip") and weight of an individual (variable name "weight"). Name this model model1. This follows the form --> model1 = lm(y (response variable) ~ x (explanatory variable), data = name_of_data_set). 
+  CorrectAnswer: model1=lm(hip~weight, data=bf); model1=lm(hip~weight, bf)
+  AnswerTests: any_of_exprs('model1=lm(hip~weight, data=bf)', 'model1=lm(hip~weight, bf)')
+  Hint: Your code should look like this--> model1=lm(hip~weight, data=bf)
+  
+
+- Class: cmd_question
+  Output: Summarize the linear model using the regressionAnalysis() command. 
+  CorrectAnswer: regressionAnalysis(model1)
+  AnswerTests: omnitest(correctExpr='regressionAnalysis(model1)')
+  Hint: Your code should look like this --> regressionAnalysis(name_of_model)
+
+- Class: text
+  Output: We can use this output to represent the relationship between hip and weight in the form of a linear equation --> y = a + bx.
+
+- Class: text
+  Output: The equation is --> hip = 58.87 + 0.23 * weight, as you can see in the output of the regressionAnalysis() function. 
+
+- Class: mult_question
+  Output: The slope of the line is the coefficient of the explanatory variable, weight. What is the slope of the line of model1?  
+  AnswerChoices: 0.23; 0.885; 58.867
+  CorrectAnswer: 0.23
+  AnswerTests: omnitest(correctVal="0.23")
+  Hint: Look at the "weight" row and "coefficients" column.
+
+- Class: text
+  Output: The slope indicates that for every one pound increase in weight, hip circumference increases by 0.23 cm on average. 
+
+
+- Class: mult_question
+  Output: How could we use the above equation to predict the hip circumference of someone that weighs 200 lbs?
+  AnswerChoices: 0.23 + 58.87 * 200;58.87 + 0.23 * 200; (0.23 + 58.87) * 200
+  CorrectAnswer: 58.87 + 0.23 * 200
+  AnswerTests: omnitest(correctVal="58.87 + 0.23 * 200")
+  Hint: Plug in 200 in place of "weight".
+
+
+- Class: exact_question
+  Output: Use the equation above to predict the hip circumference of an individual who weighs 200 lbs. Round your answer to two decimal places. Remember, R is a great calculator! 
+  CorrectAnswer: 104.87
+  AnswerTests: omnitest(correctVal="104.87")
+  Hint: Plug in 200 for weight in the equation to get something like -> 58.87 + 0.23 * 200  and solve! 
+
+- Class: figure
+  Output: You can visually confirm your answer by finding 200 on the weight axis, drawing up to the standard curve, then left to the hip circumference axis. We have done this for you in the updated plot in your Files|Plots|Package|Help pane. 
+  Figure: hip_and_weight_output.R
+  FigureType: add 
+
+- Class: exact_question
+  Output: What is the R-squared value for model1? (Round your answer to two decimal places). 
+  CorrectAnswer: 0.89
+  AnswerTests: omnitest(correctVal="0.89")
+  Hint: Look at the "$R.Squared" value in the regression analysis of model1.
+
+- Class: text
+  Output: The R-squared for the hip and weight model is 0.89 and this means that 89 % of the variability in hip circumference is explained by weight. 
+
+
+- Class: text
+  Output: We also know that taller people tend to weigh more than shorter people- i.e. weight is correlated with height. 
+
+- Class: figure
+  Output: Let us observe a graph of the relationship between weight and height of individuals. Look at the graph that appears on your Files|Plots|Packages|Help pane. 
+  Figure: height_and_weight.R
+  FigureType: add 
+
+
+- Class: cmd_question
+  Output: Use a valid R-command to make a linear model between height and weight. Name this model2. Note that weight is still the explanatory variable in this model.
+  CorrectAnswer: model2=lm(height~weight, data=bf); model2=lm(height~weight, bf)
+  AnswerTests: any_of_exprs('model2=lm(height~weight, data=bf)', 'model2=lm(height~weight, bf)')
+  Hint: Your code should look like this--> model2=lm(height~weight, data=bf)
+
+- Class: cmd_question
+  Output: Use a valid R-command to conduct a regression analysis of model2.
+  CorrectAnswer: regressionAnalysis(model2)
+  AnswerTests: omnitest(correctExpr='regressionAnalysis(model2)')
+  Hint: Your code should look like this --> regressionAnalysis(name_of_model)
+
+- Class: mult_question
+  Output: What is the intercept of the regression line of model2?
+  AnswerChoices: 0.04;63.22;0.096
+  CorrectAnswer: 63.22
+  AnswerTests: omnitest(correctVal="63.22")
+  Hint: Look at the Intercept row in the regression analysis.
+
+- Class: mult_question
+  Output: What is the slope of the regression line of model2?
+  AnswerChoices: 0.04;63.22;0.096
+  CorrectAnswer: 0.04
+  AnswerTests: omnitest(correctVal="0.04")
+  Hint: Look at the "weight" row and the "coefficients" column in the regression analysis.
+
+- Class: mult_question
+  Output: From the slope of model2, we can infer that height and weight are 
+  AnswerChoices: Positively correlated; Negatively correlated; Not correlated
+  CorrectAnswer: Positively correlated
+  AnswerTests: omnitest(correctVal="Positively correlated")
+  Hint: The slope of the graph is + 0.0387, which indicates that an increase in weight would lead to a corresponding increase of 0.0387 cm in height on average. This indicates a positive correlation. 
+
+
+- Class: exact_question
+  Output: How much of the variability of height is explained by weight? Express your answer in % form but do not include the "%" sign. (Round your answer to one decimal place). 
+  CorrectAnswer: 9.6 
+  AnswerTests: omnitest(correctVal="9.6")
+  Hint: Look at the "R-Squared" value in the regression analysis of model2.
+
+- Class: figure
+  Output: Observe the scatter plot of this relationship in your "Files|Plots|Packages|Help" pane. The plot was made with the R-command--> ggplot(bf, aes(x=weight, y=hip)) + geom_point() + labs(title="Scatter-plot of hip circum. vs weight", x="Weight(lbs)", y="Hip Circum.(cm)") 
+  Figure: hip_and_weightscatter.R
+  FigureType: add
+
+- Class: text
+  Output: One point to reiterate --> Standard curves are only estimates. The above graphs can be re-plotted taking into account standard deviations. The only change we make to the commands is in the stat_smooth() function, where we write se=TRUE instead of se=FALSE. 
+
+- Class: figure
+  Output: Observe the updated graph (with standard deviations) in your Files|Plots|Packages pane. If you think you cannot see anything new, try zooming into the plot using the zoom button on the tab below the Files|Plots|Packages menu.
+  Figure: hip_and_weight_stdev.R
+  FigureType: add
+ 
+
+- Class: cmd_question
+  Output: Now you try it! Re-plot the graph for the height and weight model with standard deviations. 
+  CorrectAnswer: ggplot(bf, aes(x=weight, y=height)) + geom_point() + labs(title="Standard Curve of Hip Circumference and Weight (With Standard Deviations) ", x="Weight(lbs)", y="Height (cm)") + stat_smooth(method="lm", se=TRUE)
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs'); aes_arg('weight'); aes_arg('height')
+  Hint: Your code should look like this --> ggplot(bf, aes(x=weight, y=height)) + geom_point() + labs(title="Standard Curve of Hip Circumference and Weight (With Standard Deviations) ", x="Weight(lbs)", y="Height (cm)") + stat_smooth(method="lm", se=TRUE)
+
+
+
+
+

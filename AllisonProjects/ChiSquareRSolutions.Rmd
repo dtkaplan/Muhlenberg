@@ -1,0 +1,141 @@
+---
+title: "Chi-Square Testing"
+author: ''
+date: ''
+output:
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+require(mosaic)
+require(knitr)
+```
+
+###Goodness of Fit Test
+
+Looking at the M&M activity, we can perform the Chi-Square goodness of fit test here:
+
+```{r Chi-Square Goodness of Fit Test}
+#First, we need a variable that has all of our counts.  We'll create an array using the c() function.
+
+count<-c(81, 68, 77, 157, 149, 79)
+
+#Next, we need what the proporitons SHOULD be.  Remember:  all proportions should all to 1
+
+proportions<-c(.13, .14, .13, .24, .2, .16)
+
+#Next, we'll run a chi-square test in R.  You need the counts, and then to tell R what the proportions are, using the p= command.  
+
+xchisq.test(count, p=proportions)
+```
+
+Things to notice about the output:
+
+1.  The observed data is the first line of what looks like a "table"
+2.  The expected counds are the second line of the table
+3.  The partial chi-square values are the third line of the table
+4.  The sum of all the partial chi-square values (the X-square value) is found at the very top of the output
+5.  The degrees of freedom (df) is #groups - 1
+6.  The p-value to test your hypothesis
+
+###Test for Independence
+
+To perform a test for independence where we just have counts (not a table of data), we can create a table.
+
+```{r}
+#Create counts for each variable
+
+plain<-c(81, 68, 77, 157, 149, 79)
+peanut<-c(69, 110, 70, 162, 148, 123)
+
+#Then we combine them in a table
+
+mm<-matrix(c(plain, peanut), ncol=6, byrow=TRUE)
+
+#Then we can name the rows
+
+rownames(mm)<-c("plain", "peanut")
+colnames(mm)<-c("Brown", "Yellow" , "Red", "Blue", "Orange", "Green")
+
+#Lets look at the table we created
+
+mm
+
+#Then perform the chi-square test
+
+xchisq.test(mm)
+
+```
+
+We can also do the test for independence by making an Excel document with counts.
+
+```{r}
+#First, we'll read in our data
+
+mm2<-read.csv("http://mathcs.muhlenberg.edu/~davidson/Datasets/MandMdata.csv")
+
+#You'll notice how I set up the table in Excel, its not exactly the same as what we want it to look like, but this way we can name the variables appropriately and create a table.  
+
+mm2
+
+#Here we'll make a table that looks the way we want it to from our data that we'll be able to read into a Chi-Square test command.
+
+mm3<-xtabs(Count~Type+Color, data=mm2)
+mm3
+
+
+xchisq.test(mm3)
+```
+
+###Practice Test for Independence
+
+Using the data from the Kristin Gilbert trial, perform a chi-square test in R.
+
+```{r}
+#Create counts for each variable
+
+
+
+#Combine data in a table
+
+
+
+#Name the rows and columns
+
+
+
+#Make sure table looks right
+
+
+
+#Perform the chi-square test
+
+
+```
+
+###Practice Goodness of Fit Test
+
+I'm thinking of a number between 1 and 5 (inclusive).  What number am I thinking of?
+
+```{r}
+#Counts
+
+
+#Proportions
+
+
+#Chi-Square test
+
+
+
+```
+

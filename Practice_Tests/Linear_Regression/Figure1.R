@@ -1,0 +1,1 @@
+ggplot(bf, aes(weight, hip)) + geom_point() + stat_smooth(method="lm", se=FALSE)

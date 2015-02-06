@@ -1,0 +1,40 @@
+- Class: meta
+  Course: Swirl Tests
+  Lesson: Metric Conversions and Computing Dilutions
+  Author: Your name here
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.11
+
+- Class: text
+  Output: In this lesson you will practice metric conversions and computing dilutions.
+
+- Class: cmd_question
+  Output: How many µL are in 0.35 mL?
+  CorrectAnswer: 3.5
+  AnswerTests: omnitest(correctExpr='3.5')
+  Hint: Don't include units
+  
+- Class: cmd_question
+  Output: How many mg are in a g?
+  CorrectAnswer: 1000
+  AnswerTests: omnitest(correctExpr='1000')
+  Hint: Don't include units
+  
+- Class: cmd_question
+  Output: How many deciseconds (ds) are in 3 picoseconds (ps)?
+  CorrectAnswer: 3**(-11)
+  AnswerTests: any_of_exprs('0.00000000003','3**(-11)','3**-11')
+  Hint: Don't include units
+  
+- Class: cmd_question
+  Output: How much agarose in g would you need to make up 50 mL of 1.5% gel?
+  CorrectAnswer: 0.75
+  AnswerTests: omnitest(correctExpr='0.75')
+  Hint: Don't include units. Remember to convert your answer to grams.
+  
+- Class: cmd_question
+  Output: How much of a 40x TAE stock solution in mL would you need to make up 8 liters of 1x TAE running buffer?
+  CorrectAnswer: 200
+  AnswerTests: omnitest(correctExpr='200')
+  Hint: Don't include units. Remember to convert your answer to mL.

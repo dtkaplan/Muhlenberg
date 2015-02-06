@@ -1,0 +1,75 @@
+- Class: meta
+  Course: A Gentle Intro to R
+  Lesson: T-test
+  Author: Yuqi Ren
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.8
+  
+  
+- Class: text
+  Output: We have installed the dataset swim = fetchGoogle("https://docs.google.com/spreadsheet/pub?key=0AnFamthOzwySdHZqZUlqdkM3OU9RZ0hxUDlGTUxiWFE&output=csv")
+
+  
+- Class: cmd_question
+  Output: First type in the commands View(swim) to view the dataset.
+  CorrectAnswer: View(swim)
+  AnswerTests: omnitest(correctExpr='View(swim)')
+  Hint: Use the function View(Name_of_dataset)
+ 
+ 
+- Class: cmd_question
+  Output: If we want to build a subset contains cases only for males, what command should we use? Call it male.
+  CorrectAnswer: male = subset(swim, sex=="M")
+  AnswerTests: omnitest(correctExpr='male = subset(swim, sex=="M")')
+  Hint: Use the subset(Name_of_dataset, category == "Your_answer")
+
+
+- Class: cmd_question
+  Output: Build a subset for female too, call it female.
+  CorrectAnswer: female = subset(swim, sex=="F")
+  AnswerTests: omnitest(correctExpr='female = subset(swim, sex=="F")')
+  Hint: Use the subset command
+  
+
+- Class: cmd_question
+  Output: We have had the subsets male and female. If we want to compare the time between male and female, what command should we use??
+  CorrectAnswer: t.test(male$time, female$time); t.test(female$time, male$time) 
+  AnswerTests: any_of_exprs('t.test(male$time, female$time)', 't.test(female$time, male$time)')
+  
+  
+- Class: exact_question
+  Output: What is the p-value for time if we compare male and female group? (paste the exact number you got)
+  CorrectAnswer: 1.325e-05
+  AnswerTests: omnitest(correctVal="1.325e-05")
+  Hint: Use the command t.test() to get the p-value
+  
+
+- Class: mult_question
+  Output: What is the null hypothesis in this case?
+  AnswerChoices: The mean swim time of the male group and the female group is the same; The mean swim time of the male group and the female group is significantly different; The mean swim time of the male group is shorter than that of the female group; We cannot give a null hypothesis in this case
+  CorrectAnswer: The mean swim time of the male group and the female group is the same
+  AnswerTests: omnitest(correctVal="The mean swim time of the male group and the female group is the same")
+  Hint: The null hypothesis should be the group means are the same.
+
+  
+- Class: mult_question
+  Output: Based on your p-value in the last question, what should we say about the time between the male and female groups?
+  AnswerChoices: We should reject the null and the mean time is significantly different; We should reject the null and the mean time is the same; We cannot reject the null and the mean time is significantly different; We cannot reject the null and the mean time is the same
+  CorrectAnswer: We should reject the null and the mean time is significantly different
+  AnswerTests: omnitest(correctVal="We should reject the null and the mean time is significantly different")
+  Hint: If p-value < 0.05, reject the null hypothesis in this case
+
+
+- Class: mult_question
+  Output: Which of the following statements is correct based on the p-value we got?
+  AnswerChoices: If we do not reject the null hypothesis, Type I error occurs; If we do not reject the null hypothesis, Type II error occurs; If we reject the null hypothesis, Type I error occurs; If we reject the null hypothesis, Type II error occurs
+  CorrectAnswer: If we do not reject the null hypothesis, Type II error occurs
+  AnswerTests: omnitest(correctVal="If we do not reject the null hypothesis, Type II error occurs")
+  Hint: Type II error occurs when you fail to reject H0 but Ha is true. Type I error occurs when you reject H0 but H0 is true.
+
+
+
+
+
+

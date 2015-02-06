@@ -1,0 +1,56 @@
+- Class: meta
+  Course: Practice Test
+  Lesson: Making Graphs
+  Author: Paul Yeo
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.6
+    
+- Class: text
+  Output: In this lesson you will practice making simple graphs using the ggplot() command from the ggplot2 library. We will be using a dataset gathered by Ecologists Shirley Baker and Daniel Hornbach. Baker and Hornbach observed whether zebra mussels attached to Amblema mussel gained a physiological advantage over zebra mussels attached to rock by measuring oxygen uptake and ammonia excretion.
+
+- Class: cmd_question
+  Output: Try graphing a simple boxplot using, "mussel", the name we gave our data frame, with the variables "x=attach" and "y=AvgAmmonia". Remember the model ggplot(data_name, aes(x=variable_name, y=variable_name)) + geom_boxplot().
+  CorrectAnswer: ggplot(mussel, aes(x=attach, y=AvgAmmonia)) + geom_boxplot()
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_boxplot'); aes_arg('attach'); aes_arg('AvgAmmonia'); student_answers()
+  Hint: Did you put quotes around the data frame name and variables? If so, don't!
+
+- Class: text
+  Output: Check out your graph!
+
+- Class: cmd_question
+  Output: You can also label the x axis, y axis, and title for any plot by adding "labs(title= " ", x= " ", y= " ")". Create a boxplot using the "mussel" dataset using the variables "x=attach" and "y=AvgAmmonia" with meaningful title, x axis, and y axis labels.
+  CorrectAnswer: ggplot(mussel, aes(x=attach, y=AvgAmmonia)) + geom_boxplot() + labs(title="Average Ammonia grouped by substrate", x="Attached to", y="Average Ammonia Produced")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_boxplot'); aes_arg('attach'); aes_arg('AvgAmmonia'); expr_uses_func('labs')
+  Hint: Remember to include labs(title= " ", x= " ", y= " ").
+
+- Class: text
+  Output: Look at your awesome graph!
+
+- Class: cmd_question
+  Output: The last modification we will do to our boxplot is add color to visually distinguish the two groups the zebra mussels attached to. We do this by including the "fill" argument inside "aes" like "...aes(x=attach, y=AvgAmmonia, fill=attach))...". Try adding this feature to the previous plot you created.
+  CorrectAnswer: ggplot(mussel, aes(x=attach, y=AvgAmmonia, fill=attach)) + geom_boxplot() + labs(title="Average Ammonia grouped by substrate", x="Attached to", y="Average Ammonia Produced")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_boxplot'); aes_arg('attach'); aes_arg('AvgAmmonia'); expr_uses_func('labs'); uses_arg('fill')
+  Hint: Remember to use the variables "attach" and "AvgAmmonia", include "fill=attach" in "aes" and the fields geom_boxplot() and labs(title=, x=, y=).
+
+- Class: text
+  Output: Check out what you made mate!
+
+- Class: cmd_question
+  Output: Now try it all by yourself. Create a boxplot using the same "mussel" dataset to compare the two groups Amblema and Rock, but by "AvgOxygen", the average oxygen uptake. 
+  CorrectAnswer: ggplot(mussel, aes(x=attach, y=AvgOxygen, fill=attach)) + geom_boxplot() + labs(title="Average Oxygen grouped by substrate", x="Attached to", y="Average Oxygen Produced")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_boxplot'); aes_arg('attach'); aes_arg('AvgOxygen'); expr_uses_func('labs'); uses_arg('fill')
+  Hint: Remember to replace "AvgAmmonia" with "AvgOxygen."
+
+- Class: text
+  Output: Look at you doing it all by yourself. 
+
+- Class: cmd_question
+  Output: Last but not least, we will learn how to make scatterplots. To create a scatterplot replace geom_boxplot() with geom_point(). Each case in the dataset does not represent one zebra mussel, but in fact represents a group of zebra mussels that Ecologists Baker and Hornbach observed. The number of zebra mussels in each group is represented by the variable "count". Create a scatterplot using the "mussel" dataset using the variables "x=count" and "y=AvgAmmonia" with meaningful title, x axis, and y axis labels. 
+  CorrectAnswer: ggplot(mussel, aes(x=count, y=ammonia)) + geom_point() + labs(title="Scatterplot of ammonia by the number of mussels in a group", x="Count", y="AvgAmmonia")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs'); aes_arg('count'); aes_arg('AvgAmmonia');
+  Hint: Remember to use geom_point() instead of geom_boxplot()
+  
+- Class: text
+  Output: As a reward I give you the link http://docs.ggplot2.org/current/index.html. The index holds a list of all the   fields you can add to change a ggplot graph to create more complex plots. 
+

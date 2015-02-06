@@ -1,0 +1,1 @@
+print(ggplot(bf, aes(weight, hip)) + geom_point() + labs(title="Scatter-plot of hip circum. vs weight", x="Weight(in lbs)", y="Hip Circum.(in cm") +stat_smooth(method="lm", se=FALSE) + geom_vline(xintercept=200, color="blue") +geom_hline(yintercept=104.74, color="blue"))

@@ -1,0 +1,118 @@
+- Class: meta
+  Course: Practice_Tests
+  Lesson: Swirl_Drill_1
+  Author: Your name here
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.9
+
+- Class: text
+  Output: Today, we will practice building linear models and standard curves!
+
+- Class: text
+  Output: The data frame that we are using for this activity is called "airpass" and it includes the monthly totals of airline passengers from 1949 to 1951. 
+
+- Class: cmd_question
+  Output: Let us look at the names of the variables in the data frame. Enter a valid R-command to do this. 
+  CorrectAnswer: names(airpass)
+  AnswerTests: omnitest(correctExpr='names(airpass)')
+  Hint: Your R-code should look like this --> names(airpass)
+
+- Class: text
+  Output: The variable pass measures the number of passengers in thousands and the variable year records the date as a decimal. 
+  
+  
+- Class: cmd_question
+  Output: Enter a valid R-command to view the first six cases of your data frame.
+  CorrectAnswer: head(airpass)
+  AnswerTests: omnitest(correctExpr='head(airpass)')
+  Hint: Your command should look like this --> head(airpass)
+
+
+- Class: cmd_question
+  Output: Enter a valid R-command to find the dimensions (number of cases and variables) of your data frame.
+  CorrectAnswer: dim(airpass)
+  AnswerTests: omnitest(correctExpr='dim(airpass)')
+  Hint: The function is dim(). 
+
+
+- Class: text
+  Output: Consider using the "year" variable to predict the number of flights taken by passengers. In this relationship, year is the explanatory variable and pass is the response variable. 
+
+- Class: text
+  Output: Let us make a plot to determine visually the kind of relationship that exists between the two variables of interest. 
+
+- Class: cmd_question
+  Output: Enter a valid R expression to make a scatterplot using ggplot(). Title the graph and label the appropriate axes using the labs() function. 
+  CorrectAnswer: ggplot(airpass, aes(x=year, y=pass)) + geom_point() + labs(title="Scatter-plot of Passengers vs Year", x="Year", y="Passengers")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs'); aes_arg('year'); aes_arg('pass')
+  Hint: Your R-code should look like this --> ggplot(airpass, aes(x=year, y=pass)) + geom_point() + labs(title="Scatter plot of Passengers vs Year", x="Year", y="Passengers"). Note--> The labels and title can be different!
+
+- Class: mult_question
+  Output: Based on the above scatter plot you just made, we can see that there is relationship between year and number of passengers. Is the relationship -->
+  AnswerChoices: Positive; Negative; No relationship
+  CorrectAnswer: Positive 
+  AnswerTests: omnitest(correctVal="Positive")
+  Hint: The number of passengers increases with year and it increases at a constant rate. 
+
+- Class: text
+  Output: We can add a standard curve to the scatter plot to help us summarize the relationship. 
+
+- Class: cmd_question
+  Output: Go on! Add a standard curve to your scatter plot. This can be done using the stat_smooth(method="lm", se=FALSE) function. Remember to change the title as well! 
+  CorrectAnswer: ggplot(airpass, aes(x=year, y=pass)) + geom_point() + labs(title="Standard Curve of Passengers vs Year", x="Year", y="Passengers")+stat_smooth(method="lm", se=FALSE)
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs');expr_uses_func('stat_smooth'); aes_arg('year'); aes_arg('pass')
+  Hint: Your code should look like this --> ggplot(airpass, aes(x=year, y=pass)) + geom_point() + labs(title="Standard Curve of Passengers vs Year", x="Year", y="Passengers")+stat_smooth(method="lm", se=FALSE) Note --> Your title and axes labels may differ from mine!
+        
+- Class: cmd_question
+  Output: Re-plot the above graph with standard errors this time. All you have to do is change the se=FALSE to se=TRUE in the stat_smooth function. 
+  CorrectAnswer: ggplot(airpass, aes(x=year, y=pass)) + geom_point() + labs(title="Standard Curve of Passengers vs Year", x="Year", y="Passengers")+stat_smooth(method="lm", se=TRUE)
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs');expr_uses_func('stat_smooth'); aes_arg('year'); aes_arg('pass')
+  Hint: Your code should look like this --> ggplot(airpass, aes(x=year, y=pass)) + geom_point() + labs(title="Standard Curve of Passengers vs Year", x="Year", y="Passengers")+stat_smooth(method="lm", se=FALSE)
+
+
+- Class: cmd_question
+  Output: Write a valid R-command to create a linear model that captures the relationship between the date (variable name "year") and number of passengers (variable name "pass"). Name this model model1. 
+  CorrectAnswer: model1=lm(pass~year, data=airpass); model1=lm(pass~year, airpass)
+  AnswerTests: any_of_exprs('model1=lm(pass~year, data=airpass)', 'model1=lm(pass~year, airpass)')
+  Hint: Your code should look like this --> model1=lm(pass~year, data=airpass)
+
+- Class: cmd_question
+  Output: Summarize the linear model you just created using the regressionAnalysis() command. 
+  CorrectAnswer: regressionAnalysis(model1)
+  AnswerTests: regressionAnalysis(model1)
+  Hint: Your code should look like this --> regressionAnalysis(name_of_model)
+
+  
+- Class: mult_question
+  Output: How could you find the number of passengers in July of 1973? Remember how month is represented in this data frame. For example, July 1973 would be documented as 73.5. 
+  AnswerChoices: pass = -1474.771 + 31.886 * 1973; 1973 = -1474.771 + 31.886 * year; pass = -1474.771 + 31.886 * 73.5
+  CorrectAnswer: pass = -1474.771 + 31.886 * 73.5
+  AnswerTests: omnitest(correctVal="pass = pass = -1474.771 + 31.886 * 73.5")
+  Hint: Replace the year variable in the equation with 73.5 
+
+- Class: mult_question
+  Output: What is the slope of the line of model1? In this example, the units of slope are thousands of passengers per year. 
+  AnswerChoices: 1474.771;-1474.771;31.886;-31.886
+  CorrectAnswer: 31.886
+  AnswerTests: omnitest(correctVal="31.886")
+  Hint: Look at the coefficient of year in the $Model.Values portion of the regressionAnalysis. 
+
+- Class: exact_question
+  Output: What is the R-squared value for model1? (Round your answer to two decimal places).
+  CorrectAnswer: 0.85
+  AnswerTests: omnitest(correctVal="0.85")
+  Hint: Look at the $R.squared value in the regressionAnalysis of model1.
+
+
+- Class: mult_question
+  Output: Study the p-value in the regressionAnalysis() summary. Based on the p-value, is there a significant linear relationship between the year and the number of monthly passengers?
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal="Yes")
+  Hint: The p-value is almost 0 which is much less than the cut-off value of 0.05.
+
+
+
+
+

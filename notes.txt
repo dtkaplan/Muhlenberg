@@ -1,0 +1,70 @@
+
+
+
+ABE is the easiest to fly 
+
+Tracy Hilbert is the assistant making all the arrangements.
+
+Arrive on Feb 6 leave on 8
+
+Feb 7
+
+
+Introduce the new Mac bio lab that uses R, to show what data acquisition, processing, and reporting skills/technology statistics students might be expected to have in their work in other fields.
+
+1. Start with the biology lab
+1. An hour with basics of R.
+#. Spend a bit of time on Locke^5
+#. A bit on big data
+#. Covers the first 8 chapters and then ANOVA, then chi^2, then revisiting linear regression.
+#. Maybe a little logistic regression, but not necessarily.
+#. A bit about R/Markdown
+
+Deliverable: Writing in groups 
+
+
+
+## Dec 1, 2014 Phone planning conversation
+
+Elyn and Allison
+
+11 faculty incl 2 computer scientists (who won't come)
+
+Allison is the only formally trained statistician.
+
+Background:
+
+Two 100-level courses: stat methods instead of stat analysis.  Students didn't n
+
+MATH 119 Exploratory data analysis with a bit of inference.  
+
+Book: Moore, McCabe and Craig
+
+Some people have fallen in love with using R.  Elyn is the only of 4 sections not to use R; she uses Minitab
+
+Only half the department even has R running.  
+
+Main question: How to incorporate R into the class?  A lab book for the class with 10 or so projects.
+
+
+
+## Logistics
+
+File storage. See `/Users/kaplan/Google Drive/RMD site/index.Rmd`.
+
+## DCF
+
+Smith workshop:  An opportunity to do data-oriented project development
+
+See "CoursePackage" under TeachingWithR.  Use the collaborate function
+there:
+```r
+doc <- collaborate(doc="Shared", buffermode="Markdown")
+doc("edit")
+```
+
+Link for OpenIntro labs: https://mail.google.com/mail/u/0/#inbox/14b3207e328813da
+
+Link for Cell-bio/Genetics lab: http://paulyeo21.github.io/cell_bio_gen_lab/index.html
+
+ 

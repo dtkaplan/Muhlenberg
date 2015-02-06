@@ -1,0 +1,120 @@
+- Class: meta
+  Course: A Gentle Intro to R
+  Lesson: ANOVA Tests
+  Author: Yuqi Ren
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.8
+
+
+- Class: text
+  Output: First read the dataset data(iris). You don't need to upload that because the dataset is so famous and it is already in R. 
+  
+  
+- Class: cmd_question
+  Output: Type the command View(iris) to view the whole dataset first.
+  CorrectAnswer: View(iris)
+  AnswerTests: omnitest(correctExpr='View(iris)')
+  Hint:
+  
+  
+- Class: text_question
+  Output: What is the categorical variable in this dataset?
+  CorrectAnswer: Species
+  AnswerTests: omnitest(correctVal="Species")
+  Hint: 
+  
+  
+- Class: cmd_question
+  Output: Build the model that explores the relationship between petal-length and species, called mod1
+  CorrectAnswer: mod1 = lm(Petal.Length~Species, data=iris); mod1 = lm(Petal.Length~Species, iris)
+  AnswerTests: any_of_exprs('mod1 = lm(Petal.Length~Species, data=iris)', 'mod1 = lm(Petal.Length~Species, iris)')
+  Hint: Petal.Length is the response variable
+  
+  
+- Class: cmd_question
+  Output: What command you should use to conduct a one-way ANOVA test for mod1?
+  CorrectAnswer: anova(mod1)
+  AnswerTests: omnitest(correctExpr='anova(mod1)')
+  Hint: Use the command anova(Your_Model_Name)
+  
+
+- Class: cmd_question
+  Output: Build a model that explores the relationship between sepal width and species, call it mod2. 
+  CorrectAnswer: mod2 = lm(Sepal.Width~Species, data=iris); mod2=lm(Sepal.Width~Species, iris)
+  AnswerTests: any_of_exprs('mod2 = lm(Sepal.Width~Species, data=iris)', 'mod2=lm(Sepal.Width~Species, iris)')
+  Hint:
+  
+
+- Class: cmd_question
+  Output: If we want to see whether there is at least one of the sepal widths is different among the three species, what command should we use?
+  CorrectAnswer: anova(mod2)
+  AnswerTests: omnitest(correctExpr='anova(mod2)')
+  Hint: Use the command anova(Your_Model_Name)
+  
+
+- Class: mult_question
+  Output: Which of the following statement is correct?
+  AnswerChoices: The null hypothesis of the anova test is that　the mean sepal widths of at least one of the species is significantly different to other species; The null hypothesis of the anova test should be the mean sepal widths for all species are the same; The null hypothesis of the anova test should be the mean sepal widths are different for all species; None of the statements are correct
+  CorrectAnswer: The null hypothesis of the anova test should be the mean sepal widths for all species are the same
+  AnswerTests: omnitest(correctVal="The null hypothesis of the anova test should be the mean sepal widths for all species are the same")
+  Hint: The null hypothesis is that the group means are the same
+
+
+- Class: mult_question
+  Output: What is the alternative hypothesis of this anova test?
+  AnswerChoices: The mean sepal widths for the three species are all significantly different; The mean sepal width of at least 1 species is significatnly different to other species; The mean sepal widths are the same for all species; None of the statements is correct
+  CorrectAnswer: The mean sepal width of at least 1 species is significatnly different to other species
+  AnswerTests: omnitest(correctVal="The mean sepal width of at least 1 species is significatnly different to other species")
+  Hint: The alternative hypothesis is there is at least 1 group mean is significantly different
+  
+  
+- Class: text_question
+  Output: Based on the results you got in previous questions, should we reject the null of the mean sepal widths are the same for all species? (yes/no)
+  CorrectAnswer: yes
+  AnswerTests: omnitest(correctVal="yes")
+  Hint: p-value < 0.05, then reject the null
+
+
+
+- Class: mult_question
+  Output: To test how each species are different from each other, what methods could we use?
+  AnswerChoices: one-sample t-test; anova(); summary(); TukeyHSD()
+  CorrectAnswer: TukeyHSD()
+  AnswerTests: omnitest(correctVal="TukeyHSD()")
+  Hint: 
+
+  
+- Class: cmd_question
+  Output: You have had the model, mod2 = lm(Sepal.Width~Species, data=iris). Use the TukeyHSD() to see how sepal width is different for each group. What command should we type?
+  CorrectAnswer: TukeyHSD(mod2); TukeyHSD(mod2, conf.level=0.95)
+  AnswerTests: any_of_exprs('TukeyHSD(mod2)', 'TukeyHSD(mod2, conf.level=0.95)')
+  Hint: Use the command TukeyHSD(Your_Model_Name)
+
+  
+- Class: exact_question
+  Output: Using the TukeyHSD() method, what is the p-value for the versicolor-setosa comparison?
+  CorrectAnswer: 0
+  AnswerTests: omnitest(correctVal="0")
+  Hint: 
+  
+
+- Class: mult_question
+  Output: Based on the p-value you got in the previous question, what should we conclude about versicolor and setosa species?
+  AnswerChoices: We cannot reject the null hypothesisi, so their mean sepal widths are the same; We can reject the null hypothesis, so their mean sepal widths are significantly different; We can reject the null hypothesis, so their mean sepal widths are the same; We cannot reject the null hypothesis, so their mean sepal widths are significantly different
+  CorrectAnswer: We can reject the null hypothesis, so their mean sepal widths are significantly different
+  AnswerTests: omnitest(correctVal="We can reject the null hypothesis, so their mean sepal widths are significantly different")
+  Hint: If we reject the null, then it means the group means are significantly different
+
+
+- Class: text_question
+  Output: Based on your TukeyHSD result, which species has the longest mean sepal width? (setosa, versicolor or virginica?)
+  CorrectAnswer: setosa
+  AnswerTests: omnitest(correctVal="setosa")
+  Hint: Look at the first column "diff"
+  
+  
+
+
+
+

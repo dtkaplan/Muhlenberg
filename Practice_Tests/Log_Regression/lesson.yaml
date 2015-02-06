@@ -1,0 +1,96 @@
+- Class: meta
+  Course: Practice_Tests
+  Lesson: Log Regression
+  Author: Your name here
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.9
+
+- Class: text
+  Output: Linear models are used to determine the relationship between response and explanatory variables. However, you may encounter relationships that are not always linear. In this swirl test, we will review these relationships. 
+
+- Class: text
+  Output: The data frame used for this swirl test is called "fish" and contains information about the life-span (in years) of rainbow trout and the concentration of a chemical called Polychlorinated Biphenyl(PCB) that was found in their tissues after their death. The fish were sampled from Lake Cayuga in New York. (Note-->This data frame was simulated for this activity). 
+
+- Class: text
+  Output: The fish data frame contains 20 cases and 2 variables. The two variables are "conc" (concentration of PCB in their tissues at the time of death, in moles) and "age" (life-span, in years).  
+
+- Class: cmd_question
+  Output: First, let us look at the first six cases in the data frame to help us visualize what we are working with. Enter a valid R-command to do this.   
+  CorrectAnswer: head(fish)
+  AnswerTests: omnitest(correctExpr='head(fish)')
+  Hint: Use the R-command--> head(name_of_dataset)
+
+- Class: text
+  Output: Let us now plot the relationship between age and PCB concentration to determine whether or not it is linear. In this relationship, "conc" is the response variable and "age" is the explanatory variable. 
+
+- Class: text
+  Output: To do this, use the following ggplot command--> ggplot(fish, aes(x=explanatory_variable, y=response_variable)) + geom_point() + stat_smooth(method="lm", se=FALSE) + labs(title="PCB Concentration by Life Span", x="Life span (Yrs)", y="PCB Concentration (Moles)")
+
+- Class: cmd_question
+  Output: Enter the code for the above plot with the appropriate response and explanatory variables.   
+  CorrectAnswer: ggplot(fish, aes(x=age, y=conc)) + geom_point() +stat_smooth(method="lm", se=FALSE) + labs(title="PCB Concentration by Life Span", x="Life span (Yrs)", y="PCB Concentration (Moles)")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('stat_smooth'); expr_uses_func('labs'); aes_arg('age'); aes_arg('conc')
+  Hint: Remember "age" is your explanatory variable and "conc" is your response variable.
+
+- Class: text 
+  Output: Observe the graph that appears in your Files|Plots|Pacakges|Help pane. You can see that the relationship between life span of rainbow trout and PCB concentration is not linear. Though we have plotted a standard curve on the graph, it does not accurately reflect the relationship between the two variables. Thus, we need to re-scale one axis in order for the standard curve to reflect the variables' relationship.
+
+- Class: text
+  Output: We can see that PCB concentration increases at an increasing (exponential) rate with age. This is an example of a logarithmic relationship. Thus, we should convert the  y-axis to a log_10 scale.
+
+- Class: cmd_question
+  Output: Construct a new plot with the re-scaled y-axis, log10(conc). Change the y-axis label to "Log of PCB Conc.(Moles)" and change the title of the plot to "Relationship between Life span and log of PCB Concentration".
+  CorrectAnswer: ggplot(fish, aes(age, log10(conc))) + geom_point() +stat_smooth(method="lm", se=FALSE) + labs(title="Relationship between Life span and log of PCB Concentration", x="Life span (Yrs)", y="Log of PCB Conc. (Moles")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('stat_smooth'); expr_uses_func('labs'); aes_arg('age')
+  Hint: Your code should look like this ->ggplot(fish, aes(age, log10(conc))) + geom_point() +stat_smooth(method="lm", se=FALSE) + labs(title="Relationship between Life span and log of PCB Concentration", x="Life span(Yrs)", y="Log of PCB Concen.(Moles)")
+
+- Class: text 
+  Output: Visualize the relationship between the two variables- you can see that it is linear. We can now  summarize this relationship by constructing a linear model.
+
+- Class: cmd_question
+  Output: Make a linear model called mod that models the log10 of  PCB concentration ("conc") by life span ("age").    
+  CorrectAnswer: mod=lm(log10(conc)~age, data=fish)
+  AnswerTests: omnitest(correctExpr='mod=lm(log10(conc)~age, data=fish)')
+  Hint: Your R code should look like this--> mod=lm(log10(conc)~age, data=fish)
+
+- Class: cmd_question
+  Output: Use the regressionAnalysis function to obtain a summary of the model. 
+  CorrectAnswer: regressionAnalysis(mod)
+  AnswerTests: omnitest(correctExpr='regressionAnalysis(mod)')
+  Hint: Your R code should look like this --> regressionAnalysis(name_of_model)
+
+- Class: mult_question
+  Output: According to the output of the regressionAnalysis() function, what is the model equation?
+  AnswerChoices: conc = -5.314 + 0.818 * age;log10(conc) = -5.314 + 0.818 * age;log10(conc) = -5.314 * age + 0.818
+  CorrectAnswer: log10(conc) = -5.314 + 0.818 * age
+  AnswerTests: omnitest(correctVal="log10(conc) = -5.314 + 0.818 * age")
+  Hint: 0.818 is the coefficient of age, and the slope is -5.314.
+
+- Class: mult_question
+  Output: What is the p-value for the age term?
+  AnswerChoices: -5.313; 0.818; 0.645; 2.01e-05
+  CorrectAnswer: 2.01e-05
+  AnswerTests: omnitest(correctVal="2.01e-05")
+  Hint: Check the value for "age p-value"
+
+- Class: mult_question
+  Output: Based on the p-value, is the relationship between log10(PCB concentration) and life span of fish significant?
+  AnswerChoices: Yes(Significant); No(not significant)
+  CorrectAnswer: Yes(Significant)
+  AnswerTests: omnitest(correctVal="Yes(Significant)")
+  Hint: A p-value of less than 0.05 denotes significance. 
+
+- Class: cmd_question
+  Output: Use the inversePredict() function to find the age of the fish when the PCB concentration in its tissues was 0 Moles. 
+  CorrectAnswer: inversePredict(mod, 0)
+  AnswerTests: omnitest(correctExpr='inversePredict(mod, 0)')
+  Hint: Your R code should look like this--> inversePredict(mod, 0)
+
+
+
+
+
+
+
+

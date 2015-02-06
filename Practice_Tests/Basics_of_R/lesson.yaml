@@ -1,0 +1,68 @@
+- Class: meta
+  Course: Cell Bio Gen Lab
+  Lesson: Basics of R
+  Author: Akanksha 
+  Type: Standard
+  Organization:
+  Version: 2.2.6
+  
+
+- Class: text
+  Output: Welcome to your first Swirl test! In this Swirl test, we will review the basics of R! 
+
+- Class: text
+  Output: R can be used as a calculator. Let us try out some basic arithmetic with R. 
+  
+- Class: cmd_question
+  Output: Find the sum of 345 and 98 using R. (Do not use any R-functions.)
+  CorrectAnswer: 345+98; 98+345
+  AnswerTests: any_of_exprs('345+98','98+345')
+  Hint: You should have typed in --> 345 + 98 or 98 + 345 in the console. 
+  
+- Class: cmd_question
+  Output: Find the square-root of 1183 using R. (Remember! No R-functions just yet!)
+  CorrectAnswer: 1183 ^ (0.5); 1183^0.5; '1183^(1/2)'
+  AnswerTests: any_of_exprs('1183 ^ (0.5)', '1183^0.5','1183^(1/2)')
+  Hint: You should have typed in --> 1183 ^ (0.5) or 1183 ^ (1/2) in the console.
+
+- Class: text
+  Output: We can also perform these arithmetic operations using built-in R functions. Remember, a function is a set of instructions that perform a specific task. In R, functions are written with names, followed by a set of parentheses. 
+
+- Class: cmd_question
+  Output: Use the "sum()" function to find the sum of 345 and 98. 
+  CorrectAnswer: sum(345, 98); sum(98, 345)
+  AnswerTests: any_of_exprs('sum(345,98)', 'sum(98,345)')
+  Hint: Your code should look something like this --> sum (345, 98) or sum(98,345)
+
+- Class: cmd_question
+  Output: Use the "sqrt()" function to find the square root of 99. 
+  CorrectAnswer: sqrt(99)
+  AnswerTests: omnitest(correctExpr='sqrt(99)')
+  Hint: Your code should look something like this --> sqrt (99)
+  
+- Class: text
+  Output: We will be looking at a dataset named "swim" that contains 100m swimming world records for 62 men and women between 1905 and 2004.  Let us take a look at the data frame. 
+
+- Class: figure
+  Output:
+  Figure: swim_data.R
+  FigureType: add
+
+- Class: cmd_question
+  Output: Recall that each row in the data frame represents an individual swimmer or "case." The columns time, year, and sex are attributes, or "variables," of the cases. Use the "dim()" function to find the number of cases and variables of our "swim" dataset.
+  CorrectAnswer: dim(swim)
+  AnswerTests: omnitest(correctExpr='dim(swim)')
+  Hint: Use the code format --> dim(name_of_dataset). 
+
+- Class: cmd_question
+  Output: Use the "names()" function to find the names of the variables in the "swim" dataset.
+  CorrectAnswer: names(swim)
+  AnswerTests: omnitest(correctExpr='names(swim)')
+  Hint: This is easy! Use the code format --> names(name_of_data_set) 
+
+- Class: cmd_question
+  Output: Use the "head()" function to find the first six cases of the "swim" dataset. 
+  CorrectAnswer: head(swim)
+  AnswerTests: omnitest(correctExpr='head(swim)')
+  Hint: Use the code format --> head(name_of_data_set) 
+  

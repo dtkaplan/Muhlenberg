@@ -1,0 +1,80 @@
+- Class: meta
+  Course: Cell Bio Gen Lab
+  Lesson: Variables and Basic Statistic Commands in R
+  Author: Yuqi Ren
+  Type: Standard
+  Organization:
+  Version: 2.2.8
+
+- Class: text
+  Output: In this Swirl test we will review quantitative and categorical variables and practice using basic functions on the two types of variables.  
+
+- Class: cmd_question
+  Output: Installed along with this swirl test is a data frame named "gasdata." Have a peek at the data by using one of the basic functions you have learned from before. (The function name rhymes with "red")
+  CorrectAnswer: head(gasdata)
+  AnswerTests: any_of_exprs('head(gasdata)', 'View(gasdata)')
+  Hint: Try 'head(gasdata)'
+
+- Class: mult_question
+  Output: We are looking at monthly energy data of three houses. Each row in our data frame represents a specific month of a year for one of the houses. The variable "hdd" is a measure of heating that the houses needed that month given the outside temperatures. Seeing as how "hdd" has numerical values is the variable quantitative or categorical?
+  AnswerChoices: quantitative variable; categorical variable
+  CorrectAnswer: quantitative variable
+  AnswerTests: omnitest(correctVal="quantitative variable")
+
+- Class: mult_question
+  Output: The "address" variable has three levels- a, b, and c- which represent locations for the three houses in our data frame. Seeing as how "address" has levels, is the variable quantitative or categorical?
+  AnswerChoices: quantitative variable; categorical variable
+  CorrectAnswer: categorical variable
+  AnswerTests: omnitest(correctVal="categorical variable")
+  
+- Class: text
+  Output: Recall that we can access a variable of a dataset using the syntax "name_of_dataset$name_of_variable." For instance, to access the "month" variable from our "gasdata" data frame, the code we would use would be "gasdata$month."
+
+- Class: cmd_question
+  Output: Use the syntax from before to return the "price" column from the "gasdata" data frame.
+  CorrectAnswer: gasdata$price
+  AnswerTests: omnitest(correctExpr='gasdata$price')
+  Hint: Try "gasdata$price."
+
+- Class: cmd_question
+  Output: Now that we know how to access variables of a data frame, use the "mean()" function to find the monthly average energy bill for the three houses using the "price" variable.
+  CorrectAnswer: mean(gasdata$price)
+  AnswerTests: omnitest(correctExpr='mean(gasdata$price)')
+  Hint: Try "mean(gasdata$price)."
+  
+- Class: cmd_question
+  Output: Find the monthly average amount of heating the three houses needed using the "hdd" variable in our data frame.
+  CorrectAnswer: mean(gasdata$hdd) 
+  AnswerTests: omnitest(correctExpr="mean(gasdata$hdd)")
+  Hint: Use the "mean()" function.
+    
+- Class: cmd_question
+  Output: Use the "median()" function to find the median value of "price" from our "gasdata" data frame.
+  CorrectAnswer: median(gasdata$price)
+  AnswerTests: omnitest(correctExpr='median(gasdata$price)')
+  Hint: Try "median(gasdata)."
+  
+- Class: cmd_question
+  Output: Find the middle numerical value of "hdd" from our data frame.
+  CorrectAnswer: median(gasdata$hdd) 
+  AnswerTests: omnitest(correctExpr="median(gasdata$hdd)")
+  Hint: Use the "median()" function.
+  
+- Class: cmd_question
+  Output: Find the standard deviation of "hdd" from our "gasdata" data frame.
+  CorrectAnswer: sd(gasdata$hdd) 
+  AnswerTests: omnitest(correctExpr="sd(gasdata$hdd)")
+  Hint: Use the "sd()" function.
+
+- Class: cmd_question
+  Output: Use the "levels()" function to return the names of the levels from our categorical variable "address." 
+  CorrectAnswer: levels(gasdata$address)
+  AnswerTests: omnitest(correctExpr='levels(gasdata$address)')
+  Hint: Try "levels(gasdata$address)."
+  
+- Class: cmd_question
+  Output: Use the "quantile()" function to return the quartiles of the "hdd" variable from our "gasdata" data frame.
+  CorrectAnswer: quantile(gasdata$hdd)
+  AnswerTests: omnitest(correctExpr="quantile(gasdata$hdd)")
+  Hint: Try "quantile(gasdata$hdd)."
+

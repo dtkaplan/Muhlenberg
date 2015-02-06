@@ -1,0 +1,139 @@
+- Class: meta
+  Course: Practice_Tests
+  Lesson: Swirl_Drill_3
+  Author: Your name here
+  Type: Standard
+  Organization: Your organization name here (optional)
+  Version: 2.2.9
+
+
+- Class: text
+  Output: Today, we will practice building linear models and standard curves!
+
+- Class: text
+  Output: The data frame that we are using for this activity is called "fruitfly" and it lists the longevity (in days) and thorax lengths(in mm) of male fruitflies based on their social activity. 
+
+
+- Class: cmd_question
+  Output: Let us look at the names of the variables in the data frame. Enter a valid R-command to do this. 
+  CorrectAnswer: names(fruitfly)
+  AnswerTests: omnitest(correctExpr='names(fruitfly)')
+  Hint: Your R-code should look like this --> names(name_of_dataset)
+
+- Class: cmd_question
+  Output: You can also view the entire data frame by using the View() function. Try it out! 
+  CorrectAnswer: View(fruitfly)
+  AnswerTests: omnitest(correctExpr='View(fruitfly)')
+  Hint: Your R-code should look like this --> View(name_of_dataset)
+
+  
+- Class: cmd_question
+  Output: Sometimes you do not need to view the entire data frame! Enter a valid R-command to view the only first six cases of your data frame.
+  CorrectAnswer: head(fruitfly)
+  AnswerTests: omnitest(correctExpr='head(fruitfly)')
+  Hint: Your command should look like this --> head(name_of_dataset)
+
+
+- Class: cmd_question
+  Output: Enter a valid R-command to find the dimensions (number of cases and variables) of your data frame.
+  CorrectAnswer: dim(fruitfly)
+  AnswerTests: omnitest(correctExpr='dim(fruitfly)')
+  Hint: Your command should look like this --> dim(name_of_dataset)
+
+
+- Class: text
+  Output: Consider using the "longevity" variable to predict the thorax length of fruitflies. In this relationship, longevity is the explanatory variable and thorax is the response variable. 
+
+
+- Class: cmd_question
+  Output: Enter a valid R expression to make a scatter plot using ggplot(). Title the graph and label the appropriate axes using the labs() function. 
+  CorrectAnswer: ggplot(fruitfly, aes(x=longevity, y=thorax)) + geom_point() + labs(title="Scatter plot of thorax length by longevity", x="Longevity (days)", y="Thorax Length (mm)")
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs'); aes_arg('longevity'); aes_arg('thorax')
+  Hint: Your R-code should look like this--> ggplot(fruitfly, aes(x=longevity, y=thorax)) + geom_point() + labs(title="Scatter plot of thorax length by longevity", x="Longevity (days)", y="Thorax Length (mm)") Note--> The labels and title can be different!
+
+- Class: mult_question
+  Output: Based on the above scatter plot you just made, we can see that there is relationship between ozone concentration and the temperature. Is the relationship -->
+  AnswerChoices: Positive; Negative; No relationship 
+  CorrectAnswer: Positive
+  AnswerTests: omnitest(correctVal="Positive")
+  Hint: Thorax length increases with increase in longevity, and the increase occurs at a constant rate. This confirms the fact that fruitflies that die young are not fully developed. 
+
+- Class: text
+  Output: We can add a standard curve to the scatter plot to help us summarize the relationship. 
+
+- Class: cmd_question
+  Output: Go on! Add a standard curve to your scatter plot. This can be done using the stat_smooth(method="lm", se=FALSE) function. Remember to change the title as well! 
+  CorrectAnswer: ggplot(fruitfly, aes(x=longevity, y=thorax)) + geom_point() + labs(title="Scatter plot of thorax length by longevity", x="Longevity (days)", y="Thorax Length (mm)") +  stat_smooth(method="lm", se=FALSE)
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs');expr_uses_func('stat_smooth'); aes_arg('longevity'); aes_arg('thorax')
+  Hint: Your code should look like this --> gggplot(fruitfly, aes(x=longevity, y=thorax)) + geom_point() + labs(title="Scatter plot of thorax length by longevity", x="Longevity (days)", y="Thorax Length (mm)") + stat_smooth(method="lm", se=FALSE) Note --> Your title and axes labels may differ from mine!
+        
+- Class: cmd_question
+  Output: Re-plot the above graph with standard errors this time. All you have to do is change the se=FALSE to se=TRUE in the stat_smooth function. 
+  CorrectAnswer: ggplot(fruitfly, aes(x=longevity, y=thorax)) + geom_point() + labs(title="Scatter plot of thorax length by longevity", x="Longevity (days)", y="Thorax Length (mm)")+ stat_smooth(method="lm", se=TRUE)
+  AnswerTests: expr_uses_func('ggplot'); expr_uses_func('geom_point'); expr_uses_func('labs');expr_uses_func('stat_smooth'); aes_arg('thorax'); aes_arg('longevity')
+  Hint: Your code should look like this --> ggplot(fruitfly, aes(x=longevity, y=thorax)) + geom_point() + labs(title="Scatter plot of thorax length by longevity", x="Longevity (days)", y="Thorax Length (mm)") + stat_smooth(method="lm", se=TRUE)
+
+
+- Class: cmd_question
+  Output: Write a valid R-command to create a linear model that captures the relationship between the thorax length (variable name "thorax") and lifetime of fruitfly (variable name "longevity"). Name this model model1. 
+  CorrectAnswer: model1=lm(thorax~longevity, data=fruitfly); model1=lm(thorax~longevity, fruitfly)
+  AnswerTests: any_of_exprs('model1=lm(thorax~longevity, data=fruitfly)', 'model1=lm(thorax~longevity, fruitfly)')
+  Hint: Your code should look like this --> model1=lm(thorax~longevity, data=fruitfly)
+
+- Class: cmd_question
+  Output: Summarize the linear model you just created using the regressionAnalysis() command. 
+  CorrectAnswer: regressionAnalysis(model1)
+  AnswerTests: regressionAnalysis(model1)
+  Hint: Your code should look like this --> regressionAnalysis(name_of_model)
+
+  
+- Class: mult_question
+  Output: What would be the thorax length (mm) of a fruitfly that has a life span of 35 days? Choose one of the following equations. 
+  AnswerChoices: thorax = 0.665 + 0.003 * 35; 35 = 0.665 + 0.003 * longevity
+  CorrectAnswer: thorax = 0.665 + 0.003 * 35
+  AnswerTests: omnitest(correctVal="thorax = 0.665 + 0.003 * 35")
+  Hint: Replace the longevity variable in the equation with 35.
+
+
+- Class: mult_question
+  Output: What is the slope of the line of model1? For this example, the units of slope are thorax length per life-span of fruitfly in days.
+  AnswerChoices: 0.665;0.003;0;0.397
+  CorrectAnswer: 0.003
+  AnswerTests: omnitest(correctVal="0.003")
+  Hint: Look at the coefficient of longevity in the $Model.Values portion of the regressionAnalysis. 
+
+- Class: mult_question
+  Output: How can we interpret the slope that we just examined?
+  AnswerChoices: Thorax length of the fruitfly increases by 0.003 mm for every additional day that it can survive; Thorax length of fruitfly decreases by 0.003 mm for every additional day that it can survive; Thorax length of fruitfly does not depend on longevity.
+  CorrectAnswer: Thorax length of the fruitfly increases by 0.003 mm for every additional day that it can survive
+  AnswerTests: omnitest(correctVal="Thorax length of the fruitfly increases by 0.003 mm for every additional day that it can survive")
+
+- Class: mult_question
+  Output: What is the intercept of the line of model1?
+  AnswerChoices: 0.665;0.003;0;0.397
+  CorrectAnswer: 0.665
+  AnswerTests: omnitest(correctVal="0.665")
+  Hint: Look at the (Intercept) row in the $Model.Values portion of the regressionAnalysis. 
+
+
+- Class: exact_question
+  Output: How much variability in thorax length is explained by longevity? Write your answer as a percentage but do not include the % sign. (Round your answer to one decimal place).
+  CorrectAnswer: 39.7
+  AnswerTests: omnitest(correctVal="39.7")
+  Hint: Look at the $R.squared value in the regressionAnalysis of model1 and multiply it by 100 to get a percentage!
+
+
+- Class: mult_question
+  Output: Study the p-value in the regressionAnalysis() summary. Based on the p-value, is there a significant linear relationship between the Ozone concentration and temperature?
+  AnswerChoices: Yes; No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal="Yes")
+  Hint: The p-value is almost 0 which is much less than the cut-off value of 0.05.
+
+
+
+
+
+
+
+

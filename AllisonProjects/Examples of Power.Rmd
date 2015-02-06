@@ -1,0 +1,60 @@
+---
+title: "Examples of Power"
+author: "Allison Davidson"
+date: "October 2014"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+```{r include=FALSE}
+library(knitr)
+library(mosaic)
+```
+
+The mean lifetime of a sample of 100 fluorescent light bulbs produced by a company is computed to be 1570 hours with a standard deviation of 120 hours.  The company claims the lightbulbs will last an average of 1600 hours.  Test this hypothesis with the alternative that the mean is really less than 1600 hours using an alpha level of 0.05.
+
+1.  What are the null and alternative hypothesis for this problem?
+
+2.  Is this a one or two sided test?
+
+3.  What is the p-value for the average of 1570?  (What are the mean and standard deivation you want to use to compute this value?)
+
+```{r}
+#You can find the p-value here.  To find the probability less than a value, you pnorm(x, mean=mu, sd=pop_sd/sqrt(n))
+
+
+
+#To see this visually, you can plot it using pdist("norm", x, mean=mu, sd=pop_sd/sqrt(100))
+
+
+
+```
+
+4.  What are your conclusions based on this problem?
+
+
+
+5.  What is the "rejection region" for this problem?  
+
+```{r}
+#You can find percentiles using qnorm(percentile, mean=mu, sd=pop_sd/sqrt(n)).  Hint:  your percentile should be the same as your alpha.
+
+
+
+```
+
+6.  Suppose the average lifetime was NOT actually 1600, but was really 1570 hours (which is what you found). If we sample another 100 lightbulbs, what is the power of this test?  (In other words, what is the probaiblity we would fall below the value we found in #5 if the mean was 1570 and the population sd was still 120 hours)
+
+```{r}
+#Again, you can find probabilities using pnorm(x, mean=new_mu, sd=pop_sd/sqrt(n))
+
+
+
+#To see this visually, you can plot it using pdist("norm", x, mean=new_mu, sd=pop_sd/sqrt(100)).  The shaded area you'll be interested in here is the pink (not blue).  
+
+
+
+```
+

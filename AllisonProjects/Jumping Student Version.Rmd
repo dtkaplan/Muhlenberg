@@ -1,0 +1,79 @@
+---
+title: "Bone Density"
+author: "Your Name Here"
+date: 
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE}
+library(knitr)
+library(mosaic)
+library(ggplot2)
+library(lattice)
+```
+
+An experiment was done to compare the bone density of different groups of rats: a control group, a low jump group and a high jump group.  They are interested in seeing if the jumping height has any effect on the bone density in these rats.
+
+###Hypothesis Test
+
+State your hypothesis for this test
+
+###Read in data
+
+```{r}
+jump<-read.csv("http://mathcs.muhlenberg.edu/~cha/statistics/datasets/chap12/jumping.txt", sep="\t", header=T)
+head(jump)
+names(jump)
+```
+
+###Graph Data
+
+```{r fig.height=3}
+#Create Histograms and Boxplots of the data
+```
+
+###Assumptions
+
+```{r fig.height=3}
+#Check assumptions with qqplots and favstats (see SD)
+```
+
+There are some outliers, especially in the control group, so we want to take the interpretations/results with a grain of salt.  
+
+###ANOVA model
+
+```{r}
+#Run the ANOVA model
+
+
+```
+
+What are the conclusions to the ANOVA model?
+
+What is the SD for the model? (MSE)
+
+```{r}
+#Calculate SD (MSE)
+
+```
+
+
+What is the R^2 value and what does it mean in terms of this problem?
+
+```{r}
+#Calculate R^2 value
+
+```
+
+
+Do you need to run a multiple comparisons test?  How do you know?
+
+If you need to run the multiple comparison tests, run it now and state your conclusions.
+
+```{r}
+#Run multiple comparisons test
+
+```
+
+
+

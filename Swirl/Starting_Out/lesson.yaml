@@ -1,0 +1,69 @@
+- Class: meta
+  Course: Statistics at Muhlenberg
+  Lesson: Speed Dating from Allison
+  Author: Akanksha modified by DTK 
+  Type: Standard
+  Organization:
+  Version: 2.2.6
+  
+
+- Class: text
+  Output: 'This lab involves conducting a hypothesis test.***
+       The setting is speed dating.  We want to evaluate***
+       what conditions helps judgement about whether***
+       another date is wanted***
+       Can Men tell if women want another date?*** 
+       .    Ho:  mu(yes) = mu(no)***
+       .    Ha:  mu(yes) > mu(no)***
+       ***
+       Lets get started'
+
+- Class: text 
+  Output: 'Lets look at some data***about speed ***dating.' 
+  Figure: histogram.R
+  FigureType: new
+
+- Class: figure
+  Output: Here's a histogram based on "speed"
+  Figure: histogram.R
+  FigureType: new
+
+- Class: mult_question
+  Output: 'In this question, what variable is on***the x-axis?'
+  AnswerChoices: Decision; PartnerYes; Other
+  CorrectAnswer: PartnerYes
+  AnswerTests: omnitest(correctVal= 'PartnerYes')
+  Hint: 'The x-axis variable is identified along the***x-axis at the bottom of the plot!'
+
+- Class: mult_question
+  Output: 'What does the symbol "|" mean in the formula?'
+  AnswerChoices: Condition on the following variable;Condition on the previous variable;Disregard the following variable
+  CorrectAnswer: Condition on the following variable
+  AnswerTests: omnitest(correctVal= 'Condition on the following variable')
+  Hint: We want separate plots for each level.
+
+- Class: mult_question
+  Output: 'What does "condition" mean in the previous question'
+  AnswerChoices: Separately for each level of the variable; Softens the hair; Does something else
+  CorrectAnswer: Separately for each level of the variable
+  AnswerTests: omnitest(correctVal= 'Separately for each level of the variable')
+  Hint: You dont yet know the answer, but you can tentative assume what it is.
+
+
+- Class: cmd_question
+  Output: What is the average age of the males in the study?***Use variable AgeM
+  CorrectAnswer: "mean(AgeM, data=speed, na.rm=TRUE)"
+  AnswerTests: expr_uses_func('mean'); uses_arg("na.rm"); uses_arg('data'); correctVal=26.6044
+  Hint: Remember the "na.rm=TRUE" to get rid of missing values.
+
+- Class: mult_question
+  Output: 'I am testing a long form question here.***
+    How does the Gettysburg Address start?***
+    Answer A: When in the course of human events it becomes necessary***
+    .         for one nation to dissolve***
+    Answer B: We the people of the United States of America***
+    Answer C: Four score and seven years ago, our forefathers'
+  AnswerChoices: A; B; C
+  CorrectAnswer: C
+  AnswerTests: omnitest(correctVal= 'C')
+  Hint: Almost 90 years elapsed from independence to the battle of Gettysburg

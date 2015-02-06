@@ -1,0 +1,113 @@
+---
+title: "Airplane Flights"
+author: "Your Name Here"
+date: ""
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+require(mosaic)
+require(knitr)
+```
+
+###Create Hypothesis
+
+1.  State your null and alternative hypothesis
+
+2.  Gather data (read in data from file)
+
+```{r}
+flights<-read.csv("http://mathcs.muhlenberg.edu/~davidson/Datasets/Flights.csv")
+head(flights)
+```
+
+3.  Look at data.  Create histograms and boxplots of your data.
+
+```{r}
+#Create histogram
+#Create boxplot
+
+```
+
+4.  Look at numerical summaries of data.
+
+```{r}
+#Conduct numerical summaries here
+
+
+```
+
+5.  According to the graphs and numerical summaries, what are your initial thoughts about the flight lenghts of the airplanes?
+
+6.  We want to run an ANOVA, but need to check our assumptions.  Check the two assumptions here (use R chunk if needed).
+
+```{r}
+#Check assumptions for ANOVA (there are two of them you need to check)
+
+
+```
+
+7.  Our assumptions should NOT be met.  Which assumption is violated?
+
+8.  We'll go ahead and run the ANOVA test for practice, but we must realize that we can't put a lot of faith in the results as we're violating some assumptions.
+
+```{r}
+#Practice running an ANOVA test
+
+
+```
+
+9.  According to our output, what is our conclusion to the ANOVA test?  (Use a standard alpha of 0.05)
+
+10.  What is our estimate for standard deviation? 
+
+```{r}
+#sqrt(MSE) = sqrt(Mean Sq Resituals)
+
+
+```
+
+11. Is our estimate of the pooled standard deviation (SD of the model) close to the standard deviations we found using favstats?
+
+12.  What is the $R^2$ value?  
+
+```{r}
+#(Sum Sq Plane)/(Sum Sq Plane + Sum Sq Residuals)
+
+
+```
+
+13.  Based on our ANOVA model, should we run a multiple comparisons test?  How do you know?
+
+14.  If you should run a multiple comparisons test, run one here:
+
+```{r}
+#Run multiple comparisons test here
+
+
+```
+
+15.  We'll use an alpha level again of 0.05, what are our conclusions based on the multiple comparisons test?
+
+16.  We can write the 4 types of planes as:
+
+N   F  O  W
+
+
+If we were to draw a box around the planes that are not significantly different - which planes would we draw a box around?
+
+17.  There is really only ONE plane that is significantly different than all other planes according to this test - which plane "is not like the others"?
+
+
+
+

@@ -1,0 +1,2 @@
+print( ggplot(bf, aes(weight, hip)) + geom_point() + labs(title="Scatter-plot of hip circum. vs weight", x="Weight(in lbs)", y="Hip Circum.(in cm)"))
+      

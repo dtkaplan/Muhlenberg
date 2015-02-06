@@ -1,0 +1,100 @@
+---
+title: "Shapes Analysis"
+author: "Allison Davidson"
+date: "Tuesday, October 21, 2014"
+output: html_document
+---
+
+```{r include=FALSE}
+library(knitr)
+library(mosaic)
+```
+
+###State Hypothesis
+
+We want to see if the second time playing you do better/faster.
+
+Ho:  diff=0
+Ha:  diff>0
+
+###Read in data
+
+```{r}
+shapes<-read.csv("http://mathcs.muhlenberg.edu/~davidson/Datasets/Shapes.csv")
+head(shapes)
+```
+
+###Look at data
+
+```{r}
+histogram(~Time1+Time2, data=shapes, fit="normal")
+```
+
+###Create a column called "diff"
+
+```{r}
+shapes<-transform(shapes, diff=Time1-Time2)
+head(shapes)
+```
+
+###Check assumptions (diff approximately normal)
+
+```{r}
+histogram(~diff, data=shapes)
+favstats(~diff, data=shapes)
+xqqmath(~diff, data=shapes)
+```
+
+###Since assumptions satisfied, run t-test
+
+```{r}
+t.test(~diff, data=shapes)
+```
+
+When drawing conclusions, remember to divide p-value by 2 for one sided test and remember the 2 parts of every conclusion.  
+
+
+###State Hypothesis
+
+Here we want to see if you are faster with all the same color as opposed to all different colors
+
+Ho:  diff=0 (where diff = same-different)
+Ha:  
+
+What is alternative hypothesis?
+
+###Look at data
+
+```{r}
+#Create a histogram of SameCTime and DiffCTime (where SameCTime is the time to complete the puzzle with the same color and DiffCTime is the time to complete the puzzle with different colors)
+
+
+```
+
+###Create a column called "diff"
+
+```{r}
+shapes<-transform(shapes, diff2=SameCTime-DiffCTime)
+head(shapes)
+```
+
+###Check assumptions (diff approximately normal)
+
+```{r}
+#Create a histogram and qqplot of "diff2" to check for normality.  Also, check the favstats of diff2 to see the mean/sd.
+
+
+
+```
+
+###Since assumptions satisfied, run t-test
+
+```{r}
+#Run t.test for matched pairs here
+
+
+```
+
+When drawing conclusions, remember to divide p-value by 2 for one sided test and remember the 2 parts of every conclusion.  
+
+Why don't you get a significant difference?  Why was it important to randomize which type of puzzle you do first (all same color or different colors)?

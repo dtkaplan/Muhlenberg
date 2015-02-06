@@ -1,0 +1,48 @@
+---
+title: "Corn Data Example"
+author: ""
+date: ""
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+require(mosaic)
+require(knitr)
+```
+
+```{r fig.height=4, fig.width=4}
+#Read in data
+
+corn<-read.csv("http://mathcs.muhlenberg.edu/~davidson/Corn.csv")
+corn
+
+#Create a scatterplot of the data
+
+
+
+#Calculating correlation 
+
+
+
+#Run a regression analysis
+
+
+
+#Create and plot a function that will create the regression line
+
+
+
+#Check assumptions about residuals
+
+
+```

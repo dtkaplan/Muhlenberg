@@ -1,0 +1,123 @@
+---
+title: "Speed Dating"
+author: ""
+date: "October 2014"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+require(mosaic)
+trellis.par.set(theme=theme.mosaic())  
+require(knitr)
+```
+
+###Introduction
+
+Can Men tell if women want another date?
+
+Ho:  mu(yes) = mu(no)
+Ha:  mu(yes) > mu(no)
+
+###Reading in Data
+
+```{r}
+speed<-read.csv("http://mathcs.muhlenberg.edu/~davidson/Datasets/SpeedDating.csv")
+head(speed)
+```
+
+###Looking at data, checking assumptions
+
+```{r}
+#Histograms of variables
+histogram(~PartnerYesM|DecisionF, data=speed, fit="normal")
+#Favstats of variables
+favstats(~PartnerYesM|DecisionF, data=speed)
+#qqplots
+xqqmath(~PartnerYesM|DecisionF, data=speed)
+```
+
+###Running two-sample t-test
+
+```{r}
+t.test(~PartnerYesM|DecisionF, var.equal=F, data=speed)
+```
+
+###What the values mean?
+
+```{r}
+diff<-5.432-6.135
+diff
+t<-diff/sqrt(2.027^2/146+2.378^2/126)
+t
+df=126-1 #Take min of two n's
+qt(0.975, df=125)
+lb<-diff-1.979*sqrt(2.027^2/146+2.378^2/126)
+ub<-diff+1.979*sqrt(2.027^2/146+2.378^2/126)
+lb
+ub
+pdist("t", t, df=126)  #divide p-value by 2 for one sided test
+```
+###Conclusion
+
+Because our p-value (0.005) is less than alpha (0.05) we reject Ho and conclude that we do have enough evidence to say that the average socre of males estimating if females want another date is higher for the group of females that want another date. 
+
+###New Question
+
+Can Women tell if men want another date?
+
+1.  State the Hypothesis to test this question
+
+
+
+###Looking at data, checking assumptions
+
+```{r}
+
+```
+
+2.  What are the assumptions?  Are they met in this case?  How can you tell?
+
+  
+
+###Running two-sample t-test
+
+3.  Run a two-sample t-test
+
+```{r}
+
+```
+
+###Creating your own confidence intervals.
+
+4.  Create your own confidence intervals (they should be just slightly different than what is given due to complexities R uses that we don't)
+
+```{r}
+#Calculate the lowerbound and upperbound of a 95% CI.  
+
+
+
+```
+###Conclusion
+
+5.  What is the p-value for a one-sided test?
+
+```{r}
+#You can calculate p-value here
+
+
+```
+
+
+6.  State your conclusions in terms of the problem (use alpha=0.05).  
+
+

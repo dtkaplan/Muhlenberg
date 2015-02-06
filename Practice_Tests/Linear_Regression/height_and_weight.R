@@ -1,0 +1,1 @@
+print(ggplot(bf, aes(weight, height)) + geom_point() + labs(title="Relationship between Weight and Height", x="Weight(lbs)", y="Height(cm)") +stat_smooth(method="lm", se=FALSE))

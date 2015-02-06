@@ -1,0 +1,72 @@
+---
+title: "T-Test Extravaganza Speed Dating"
+author: ""
+date: "October 2014"
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r include=FALSE}
+require(mosaic)
+trellis.par.set(theme=theme.mosaic())  
+require(knitr)
+```
+
+
+###Instructions.
+
+Use the SpeedDating data to answer the following questions.  For each, state:
+
+1.  The hypothesis (null and alternative)
+2.  Which test you are using (one sample t-test, matched pairs, two-sample t-test)
+3.  If the assumptions are met for each test
+4.  Run the test
+5.  State your conclusion in terms of the story.
+
+###Reading in Data
+
+```{r}
+speed<-read.csv("http://mathcs.muhlenberg.edu/~davidson/Datasets/SpeedDating.csv")
+head(speed)
+```
+
+###Question 1
+
+Does attractiveness affect the desire to date?  Compare the means of AttractiveM (if the male thinks the female is attractive) with their decision to date again (DecisionM).
+
+1.  State the null and alternative hypothesis
+2.  Which test you are using (one sample t-test, matched pairs, two-sample t-test)?
+3.  Are the assumptions met for this test?
+4.  Run the test
+5.  State your conclusion in terms of the story.
+
+
+###Question 2
+
+Is there a mutual feeling of shared interests between men and women?  Compare the means of SharedInterestsM to SharedInterestsF to see if there is a significant difference between the means.  (Hint:  think of the "couple" as being asked the same question twice)
+
+1.  State the null and alternative hypothesis
+2.  Which test you are using (one sample t-test, matched pairs, two-sample t-test)?
+3.  Are the assumptions met for this test?
+4.  Run the test
+5.  State your conclusion in terms of the story.
+
+
+###Question 3
+
+On average, do females like their dates?  Compare LikeF to a mean of 5 (assuming 5 is neither like nor dislike).  (Hint:  think about what you want your alternative to be if you want to show females like their dates)
+
+1.  State the null and alternative hypothesis
+2.  Which test you are using (one sample t-test, matched pairs, two-sample t-test)?
+3.  Are the assumptions met for this test?
+4.  Run the test
+5.  State your conclusion in terms of the story.
