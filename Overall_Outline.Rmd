@@ -241,7 +241,17 @@ With your neighbors, pick out a lesson that includes statistics and data and sta
 
 [slides](CellBiologyAndGenetics/Bio255Laps.Rpres)
 
+## Swirl exercises
 
+```{r eval=FALSE}
+library(swirl)
+install_course_directory(
+  "/Users/kaplan/KaplanFiles/Talks/Muhlenberg/Practice_Tests/ANOVA_Tests/")
+# and similarly for others in the `Practice_Tests` directory.
+swirl() # and select the one you want.
+```
+
+N.B. They use `=`
 ************
 
 Break at Lunchtime

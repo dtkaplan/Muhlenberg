@@ -14,6 +14,8 @@ Links to ...
 
 * [Home page for Cell-Bio/Genetics Labs](http://paulyeo21.github.io/cell_bio_gen_lab/index.html)
 
+* RPubs account: ID: dtkaplan@gmail.com passwd: Muhlenberg
+
 ## Installing Software
 
 * Macalester RStudio server: login at <macalester.edu/rstudio>.  Account names and passwords available from Danny. 
