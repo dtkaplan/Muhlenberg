@@ -16,6 +16,8 @@ Links to ...
 
 * RPubs account: ID: dtkaplan@gmail.com passwd: Muhlenberg
 
+* The package I was talking about [here](YourCourse_0.2.tar.gz)
+
 ## Installing Software
 
 * Macalester RStudio server: login at <macalester.edu/rstudio>.  Account names and passwords available from Danny. 
