@@ -57,20 +57,19 @@ Or, at least, the plan for the schedule.
 
 ## Morning 
 
-1. Biology labs in R ^[Logically, this should come in the middle, but there are scheduling constraints.]
-#. Getting started with RStudio
+
+1. Getting started with RStudio
     * RStudio server: <www.macalester.edu/rstudio>
     * accounts for this workshop: m2000-m2021, password is last 4 digits. Let's allocate them.
     * Desktop version
-        * www.r-project.org -> CRAN -> Cloud 0
-        * 
+        * www.r-project.org -> CRAN -> Cloud 0 
     
 #. RMarkdown 
     * for writing and maintaining class notes, labs, assignments
     * for students to hand in assignments
 #. Statistics and graphics with mosaic.
 
-
+1. Biology labs in R 
 
 ## Afternoon
 
@@ -87,19 +86,25 @@ Or, at least, the plan for the schedule.
 
 **********
 
-# Biology Labs
-
-[slides](CellBiologyAndGenetics/Bio255Laps.Rpres)
 
 **********
 
-## Questions
+## Questions 
 
 * What are the statistics/mathematics/graphics operations you perform now in your labs or courses?  (inc. graphics)
 * What additional or different ones would make sense from a disciplinary point of view but aren't accessible?
     Perhaps because one needs special software or it's too laborious with the software you've got, ...
   
 **********
+
+**********
+
+**********
+
+**********
+
+<image src='Images/FamliaRobinson.jpg' width='250px'>  <image src='Images/Lost_In_Space.jpg' width='350px'> 
+
 **********
 
 # A Quiz: 5 minutes
@@ -153,11 +158,37 @@ SAS      | `b = `     |`sqrt`      | `(` | 7 | `)` | `;`  (semi-colon)
 * How do you record or store data and distribute it to students?
 * How do you enter data collaboratively.
 
+
+### Cases and Variables
+
 Spreadsheets & Data frames
 
-Back to the Bio Lab data.
 
-Activities: Armed Forces data.  You and your team should enter data in the Google spreadsheet.
+#### Discussion
+
+What are the cases and variables in these data? 
+    * Do the rows have biological significance?
+    * Are the columns different kinds of things for the same object?
+
+![proliferation-data](CellBiologyAndGenetics/proliferation-data.png)
+
+#### Activities: Make these data tidy
+
+* Galton's lab notebook: 
+    ![galtons notebook](Images/galton-notebook.jpg)
+
+* [Armed Forces personnel data](https://docs.google.com/spreadsheets/d/1Ow6Cm4z-Z1Yybk3i352msulYCEDOUaOghmo9ALajyHo/edit#gid=1811988794).  You and your team should enter data in the Google spreadsheet.
+
+### Wide and Narrow
+
+National Cancer Institute NCI60 data
+
+A snippet ...
+```{r}
+require(DCF)
+DCF::NCI60[1:5,1:5]
+dim(NCI60)
+```
 
 **********
 **********
@@ -168,22 +199,50 @@ Activities: Armed Forces data.  You and your team should enter data in the Googl
 * How do you distribute them?
 * How do you give instructions for a mathematical or statistical operation?
 * How do you store & maintain documents shared by faculty?
+
+1. Opening
+2. Markdown
+3. Compiling
+4. Publishing to RPubs [need to make the account ...]
+5. Compiling to other formats
+
+## Activity
+
+Create an Rmd document that lists some of the courses you teach, and explains a bit about the topics that are covered and what kind of data the students will generate or use.
+
+Include your picture and a short biography.
+
+With your neighbors, pick out a lesson that includes statistics and data and start to write up some notes for it.
+
+
+
  
 **********
 **********
 
 # Statistics and graphics with mosaic
 
-## The command template
 
 * What mathematical/statistical operations do your students need to perform in your classes?
 * How might you like to extend them if you could.
 
-[Slides from Randall Pruim](../TeachingWithR/CommandTemplate/LessVolumeMoreCreativity.html)
+## The command template
 
-Activity: Tell a story about `NHANES` or `GaltonHeights`
+
+[Randy's notes](../TeachingWithR/CommandTemplate/LessVolumeMoreCreativity.html)
+
+#### Activity: 
+
+* Tell a story about `NHANES` or `Galton` or `CPS85`
 
 **********
+
+# Biology Labs
+
+[slides](CellBiologyAndGenetics/Bio255Laps.Rpres)
+
+
+************
 
 Break at Lunchtime
 
@@ -197,7 +256,7 @@ Activity: `edit_web_file("Document/HousePrices.Rmd")
 
 ***********
 
-# Designing labs/assignments for *your* classes
+# Designing labs/lessons/assignments for *your* classes
 
 ***********
 

@@ -12,6 +12,8 @@ Links to ...
 * A place to [post comments, notes, questions, etc.](https://docs.google.com/document/d/1krVU4GJiodgPpcCFhkYNvpM_IrApj9MY0rw7bYryChc/edit?usp=sharing)
 * [Shared spreadsheet](https://docs.google.com/spreadsheets/d/13Drvam0AEN2YMhEgUebYF92azPzTK36NnR076N-C8pg/edit?usp=sharing) for entering data
 
+* [Home page for Cell-Bio/Genetics Labs](http://paulyeo21.github.io/cell_bio_gen_lab/index.html)
+
 ## Installing Software
 
 * Macalester RStudio server: login at <macalester.edu/rstudio>.  Account names and passwords available from Danny. 

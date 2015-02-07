@@ -34,3 +34,64 @@ The variables are:
 * `Age` how old the house is
 
 Your house has a living area of 1500 sq feet, 1.5 bathrooms, 2 bedrooms, a lot of 0.5 acres, and is 25 years old.
+
+## Kinds of variables
+
+Which variables are categorical? Which quantitative?
+
+Occasionally, it's useful to treat a number as a categorical variable, e.g. Likert scales, quintiles, etc.
+
+Some examples:
+```{r}
+max( price ~ as.factor(Bedrooms), data=Houses)
+max( price ~ ntiles(LivingArea, 5), data=Houses)
+```
+
+
+## Mean prices
+
+* Compare the mean prices of houses with and without fireplaces.
+```{r}
+# Your R statements here.
+```
+
+* Give a simple interpretation of the difference in means.
+
+* Make an informative graphic that compares prices with and without fireplaces.
+
+```{r}
+# Your graphics instructions here
+```
+
+## Hypothesis testing the difference in means
+
+Carry out a formal hypothesis of the difference between the means for house with and without fireplaces. In addition to giving confidence intervals or standard errors or p-values or the like, give a reasonable interpretation, in words, of your results.
+
+## Distributions
+
+Look at the distribution of house price in the Saratoga data. Explain why the *median* price might be more informative than the mean.
+
+Then, look at the median price 
+
+* for houses with fireplaces and not
+* for different numbers of bedrooms 
+* for different numbers of bathrooms 
+* for different amount of living area
+
+## Transformations
+
+Alternatively, you might look at the logarithm of the price of houses.
+
+Show the distribution of `log10(price)`
+
+
+
+## Covariates
+
+You don't really believe that a fireplace adds so much to the price of a house.  Explain what other variables might be playing a role in setting the price.
+
+
+LIST THEM HERE
+
+
+Variables that you think play a role but aren't of direct interest --- you're interested in fireplaces after all --- are called *covariates*.
