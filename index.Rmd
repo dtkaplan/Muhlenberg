@@ -18,6 +18,10 @@ Links to ...
 
 * The package I was talking about [here](YourCourse_0.2.tar.gz)
 
+## Google Spreadsheets
+
+Open your sheet through this link: <https://g.co/oldsheets>
+
 ## Installing Software
 
 * Macalester RStudio server: login at <macalester.edu/rstudio>.  Account names and passwords available from Danny. 
