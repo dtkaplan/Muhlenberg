@@ -167,8 +167,9 @@ Spreadsheets & Data frames
 #### Discussion
 
 What are the cases and variables in these data? 
-    * Do the rows have biological significance?
-    * Are the columns different kinds of things for the same object?
+
+* Do the rows have biological significance?
+* Are the columns different kinds of things for the same object?
 
 ![proliferation-data](CellBiologyAndGenetics/proliferation-data.png)
 

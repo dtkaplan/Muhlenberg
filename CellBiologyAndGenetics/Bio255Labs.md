@@ -309,14 +309,14 @@ ReadyToUse <- inner_join( Narrow, Columns)
 
 ```
   rep  column count   type conc
-1   A Breast1 11345 Breast 0.00
-2   H Breast1 11355 Breast 0.00
-3   B Breast2 20566 Breast 0.05
-4   C Breast2 15487 Breast 0.05
-5   F Breast3 26358 Breast 0.10
-6   G Breast4 45222 Breast 0.50
-7   G Breast5 57299 Breast 1.00
-8   D  Colon5 46876  Colon 1.00
+1   H Breast1 11355 Breast 0.00
+2   A  Colon1 12156  Colon 0.00
+3   H  Colon1 10435  Colon 0.00
+4   G  Colon2  8766  Colon 0.05
+5   C Breast3 25344 Breast 0.10
+6   H Breast4 38699 Breast 0.50
+7   F  Colon4 23458  Colon 0.50
+8   F  Colon5 46754  Colon 1.00
 ```
 
 Statistical Tasks
